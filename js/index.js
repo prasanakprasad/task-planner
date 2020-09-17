@@ -14,7 +14,7 @@ const inputStat = document.querySelector('#form-validate-status')
 formMain.addEventListener('submit', (event) => {
     event.preventDefault();
     let allIsWell = 'true';
-    if (inputName.value.length > 7) {
+    if (inputName.value.length > 2) {
         inputName.classList.add('is-valid');
         inputName.classList.remove('is-invalid');
     }
@@ -24,7 +24,7 @@ formMain.addEventListener('submit', (event) => {
         inputName.classList.remove('is-valid');
     }
     //Check Description
-    if (inputDesc.value.length > 20 && inputDesc.value.length < 250) {
+    if (inputDesc.value.length > 5 && inputDesc.value.length < 250) {
         inputDesc.classList.add('is-valid');
         inputDesc.classList.remove('is-invalid');
     }
@@ -65,22 +65,26 @@ formMain.addEventListener('submit', (event) => {
     }
 
     if (allIsWell == 'true') {
-        console.log("All is Well");
-        console.log("The values passed to addTask are \n");
-        console.log(inputName.value);
-        console.log(inputDesc.value);
-        console.log(inputAsnTo.value);
-        console.log(inputDD.value);
         taskMgr.addTask(inputName.value, inputDesc.value, inputAsnTo.value, inputDD.value);
+        
+        //Clearing the form values for the next input
+        inputName.value = " ";
+        inputDesc.value = " ";
+        inputAsnTo.value = " ";
+        inputDD.value = " ";
+        inputStat.value = " ";
+        inputName.classList.remove('is-valid');
+        inputDesc.classList.remove('is-valid');
+        inputAsnTo.classList.remove('is-valid');
+        inputDD.classList.remove('is-valid');
+        inputStat.classList.remove('is-valid');
     }
     else {
         console.log("Validations did not go through");
     }
+    taskMgr.render();
     console.log(taskMgr.tasks);
-
-
-
-});
+   });
 
 //let elementsTBC=document.querySelectorAll('.checkBlank');
 // for (let i =0; i<elementTBC.length;i++)
@@ -95,3 +99,5 @@ const taskMgr1 = new TaskManager();
 taskMgr1.addTask("mow the lawn", "mow the front lawn", "jack", "2020/10/20");
 console.log(taskMgr1.tasks);
 console.log(`hello`, taskMgr1.tasks);
+const html = createTaskHtml("Clean the Kitchen", "clean the hob", "Prameela", "2020/10/03","status");
+console.log(html);
