@@ -83,10 +83,48 @@ formMain.addEventListener('submit', (event) => {
         console.log("Validations did not go through");
     }
     taskMgr.render();
-    console.log(taskMgr.tasks);
+    console.log("i wanna see tasks", taskMgr.tasks);
+    console.log(taskMgr.getTaskById(0));
    });
 
-//let elementsTBC=document.querySelectorAll('.checkBlank');
+   // selecting id where we display tasks in index.html
+  const taskListElement = document.querySelector("#taskListId");
+   
+  // adding addEventListener to html element where we render html content
+  taskListElement.addEventListener('click', (event) => {            // "event" here is the event parameter
+        console.log("finding event", event)
+        console.log("finding event's target" , event.target.classList);
+            
+    if (event.target.classList.contains('done-button')){
+        console.log("yes, it is in");
+        console.log("event target ", event.target);
+        console.log(event.target.parentNode.parentNode);
+        
+        const parentTask = event.target.parentNode.parentNode;
+
+
+        
+
+            } // if
+
+});//addEventListener
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   //let elementsTBC=document.querySelectorAll('.checkBlank');
 // for (let i =0; i<elementTBC.length;i++)
 // {
 // elementsTBC.addEventListener
