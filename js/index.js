@@ -66,7 +66,7 @@ formMain.addEventListener('submit', (event) => {
 
     if (allIsWell == 'true') {
         taskMgr.addTask(inputName.value, inputDesc.value, inputAsnTo.value, inputDD.value);
-        
+
         //Clearing the form values for the next input
         inputName.value = " ";
         inputDesc.value = " ";
@@ -85,46 +85,34 @@ formMain.addEventListener('submit', (event) => {
     taskMgr.render();
     console.log("i wanna see tasks", taskMgr.tasks);
     console.log(taskMgr.getTaskById(0));
-   });
+});
 
-   // selecting id where we display tasks in index.html
-  const taskListElement = document.querySelector("#taskListId");
-   
-  // adding addEventListener to html element where we render html content
-  taskListElement.addEventListener('click', (event) => {            // "event" here is the event parameter
-        console.log("finding event", event)
-        console.log("finding event's target" , event.target.classList);
-            
-    if (event.target.classList.contains('done-button')){
+// selecting id where we display tasks in index.html
+const taskListElement = document.querySelector("#taskListId");
+
+// adding addEventListener to html element where we render html content
+taskListElement.addEventListener('click', (event) => {            // "event" here is the event parameter
+    console.log("finding event", event)
+    console.log("finding event's target", event.target.classList);
+
+    if (event.target.classList.contains('done-button')) {
         console.log("yes, it is in");
         console.log("event target ", event.target);
         console.log(event.target.parentNode.parentNode);
-        
+
         const parentTask = event.target.parentNode.parentNode;
-
-
-        
-
-            } // if
+        let taskId = parentTask.dataset.taskId;
+        taskId = Number(taskId);
+        console.log("dataset.taskid", taskId);
+        const task = taskMgr.getTaskById(taskId);
+        console.log("task object is \n", task);
+        task.status = "Done";
+        taskMgr.render();
+    } // if
 
 });//addEventListener
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   //let elementsTBC=document.querySelectorAll('.checkBlank');
+//let elementsTBC=document.querySelectorAll('.checkBlank');
 // for (let i =0; i<elementTBC.length;i++)
 // {
 // elementsTBC.addEventListener
@@ -137,5 +125,5 @@ const taskMgr1 = new TaskManager();
 taskMgr1.addTask("mow the lawn", "mow the front lawn", "jack", "2020/10/20");
 console.log(taskMgr1.tasks);
 console.log(`hello`, taskMgr1.tasks);
-const html = createTaskHtml("Clean the Kitchen", "clean the hob", "Prameela", "2020/10/03","status");
+const html = createTaskHtml("Clean the Kitchen", "clean the hob", "Prameela", "2020/10/03", "status");
 console.log(html);
