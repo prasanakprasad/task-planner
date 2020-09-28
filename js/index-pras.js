@@ -3,6 +3,8 @@
 //addEvenet listener on form's submit event and do the validation after event.preventdefault
 
 const taskMgr = new TaskManager();
+taskMgr.load();
+taskMgr.render();
 
 const formMain = document.querySelector('#form-validate');
 const inputName = document.querySelector('#form-validate-name');
@@ -83,8 +85,7 @@ formMain.addEventListener('submit', (event) => {
         console.log("Validations did not go through");
     }
     taskMgr.render();
-    console.log("i wanna see tasks", taskMgr.tasks);
-    console.log(taskMgr.getTaskById(0));
+    taskMgr.save();
 });
 
 // selecting id where we display tasks in index.html
@@ -92,23 +93,25 @@ const taskListElement = document.querySelector("#taskListId");
 
 // adding addEventListener to html element where we render html content
 taskListElement.addEventListener('click', (event) => {            // "event" here is the event parameter
-    console.log("finding event", event)
-    console.log("finding event's target", event.target.classList);
 
     if (event.target.classList.contains('done-button')) {
-        console.log("yes, it is in");
-        console.log("event target ", event.target);
-        console.log(event.target.parentNode.parentNode);
-
+        const parentTask = event.target.parentNode.parentNode;
+        let taskId = parentTask.dataset.taskId;
+        taskId = Number(taskId);
+        const task = taskMgr.getTaskById(taskId);
+        task.status = "Done";
+        taskMgr.render();
+        taskMgr.save();
+    } // if
+    if (event.target.classList.contains('delete-button')) {
         const parentTask = event.target.parentNode.parentNode;
         let taskId = parentTask.dataset.taskId;
         taskId = Number(taskId);
         console.log("dataset.taskid", taskId);
-        const task = taskMgr.getTaskById(taskId);
-        console.log("task object is \n", task);
-        task.status = "Done";
+        taskMgr.deleteTask(taskId);
+        taskMgr.save();
         taskMgr.render();
-    } // if
+    }
 
 });//addEventListener
 
@@ -119,11 +122,3 @@ taskListElement.addEventListener('click', (event) => {            // "event" her
 // }
 //go through each elements. input value and do the not empty check and length check. and display proper message.
 //but do specific check for the date field.. 
-
-const taskMgr1 = new TaskManager();
-//console.log(taskMgr.tasks);
-taskMgr1.addTask("mow the lawn", "mow the front lawn", "jack", "2020/10/20");
-console.log(taskMgr1.tasks);
-console.log(`hello`, taskMgr1.tasks);
-const html = createTaskHtml("Clean the Kitchen", "clean the hob", "Prameela", "2020/10/03", "status");
-console.log(html);

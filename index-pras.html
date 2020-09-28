@@ -8,8 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="js/taskManager.js" defer></script>
-  <script src="js/index.js" defer></script>
+  <script src="js/taskManager-pras.js" defer></script>
+  <script src="js/index-pras.js" defer></script>
   <link rel="stylesheet" href="index.css">
   <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
   <title>Task Planner</title>
@@ -19,32 +19,46 @@
   <article>
     <section class="container-fluid">
       <header>
-        <div class="row navbar-light bg-light">
-          <div class="col-1.2 mt-4">
-            <img src="https: //cdn4.vectorstock.com/i/1000x1000/61/63/task-planning-app-icon-vector-28876163.jpg"
-              class="img-fluid img-thumbnail">
-          </div>
-          <div class="col-2">
-            <h4 class="mt-4"> Task Manager </h4>
-          </div>
-          <div class="col-6 mt-4">
-            <nav class="navbar navbar-light bg-light justify-content-center">
-              <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Find</button>
-                <button type="button" class="btn btn-outline-primary" style="padding-left:30px;">Notes</button>
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">New
-                  Task</button>
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">Task
+        <nav class="navbar navbar-expand-md bg-light">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Help</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+
+        </nav>
+
+        <!-- <div class="row"> -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-secondary ">
+          <a class="navbar-brand" href="#">
+            Elite Task Manager
+          </a>
+          <div class="float-right">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Find</button>
+                  <!-- <button type="button" class="btn btn-outline-primary" style="padding-left:30px;">Notes</button> -->
+                  <!-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">Task
                   with
                   Drawing</button>
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">Task
                   with
-                  Image</button>
-              </form>
-            </nav>
+                  Image</button> -->
+                </form>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">Add
+                  Task</button>
+              </li>
+            </ul>
           </div>
-        </div>
+        </nav>
+
       </header>
       <hr>
       </hr>
@@ -89,16 +103,23 @@
         </div> -->
       </div>
 
-      <div class="container-fluid" id="taskListId">
+      <div class="container-fluid">
+        <div class="row" id="taskListId">
 
-        <!-- <div class="row">
+        </div>
+        <!--  <div class="row">
           <div class="col-4">
-            <div class="card list-group-item" style="width:400px" id="mycard">
-              <div class="card-header">Mow the lawn 3</div>
+            <div class="card list-group-item" style="background-color: rgb(255,255,153)" style="width:400px;"
+              id="mycard">
+              <div class="card-header">Mow the lawn 3
+                <span class="badge badge-danger">Todo</span>
+              </div>
               <div class="card-body">
-                <h4 class="card-title"></h4>
-                <p class="card-text">.</p>
+                <h4 class="card-title">mow the lawn card name</h4>
+                <span class="badge badge-danger">Todo</span>
+                <p class="card-text">mow the front lawn card text</p>
                 <p>Mow the front lawn</p>
+                <p>Prasana Prasad Due Date</p>
                 <div>
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
@@ -117,7 +138,7 @@
             </div>
           </div>
           <div class="col-4">
-            <div class="card list-group-item" style="width:400px" id="mycard">
+            <div class="card list-group-item card-done" style="width:400px" id="mycard">
               <div class="card-header">Mow the lawn 3</div>
               <div class="card-body">
                 <h4 class="card-title"></h4>
@@ -237,7 +258,7 @@
   <footer>
     <hr>
     </hr>
-    <h6 style="text-align:center; font-family:'Satisfy',cursive;">Powered by GJPP <small>2020</small></h6>
+    <h6 style="text-align:center; font-family:'Satisfy',cursive;">Powered by PGP <small>2020</small></h6>
   </footer>
 
 </body>
