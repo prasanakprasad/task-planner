@@ -16,3 +16,6 @@
     .dark-teal-text {
     color: #004d40;
     }
+.card-todo{background-color:lightskyblue}
+.card-done{background-color: lemonchiffon}
+.card-any{background-color: rgb(red, green)}
