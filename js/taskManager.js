@@ -16,7 +16,7 @@ createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
              <div class="col-4">
               <div class="card ${(status === 'TODO') ? `list-group-item card-todo"` : (status === 'Done') ? `list-group-item card-done"` : `list-group-item card-any"`}
      style = "width:400px" id = "mycard" data-task-id=${id}>
-    <div class="card-header">${name}<span class="badge badge-danger">${status}</span></div>
+    <div class="card-header">${name}                          <span class="badge badge-danger">${status}</span></div>
     <div class="card-body">
       <h4 class="card-title"></h4>
       <p class="card-text"></p>
