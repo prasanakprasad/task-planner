@@ -1,18 +1,18 @@
 describe('#taskManager', () => {
-    describe('-test TaskManager initialization', () => {
-        it('-should check if the tasks array is empty', () => {
+    describe('Test TaskManager initialization', () => {
+        it('Should check if the tasks array is empty', () => {
             const TM = new TaskManager(1);
             expect(TM.tasks).toEqual([]);
         })
 
-        it('-should check if the currentId is correct', () => {
-            const TM = new TaskManager(1);
-            expect(TM.currentId).toEqual(1);
+        it('Should check if the currentId is correct', () => {
+            const TM = new TaskManager(3);
+            expect(TM.currentId).toEqual(3);
         })
     })
 
-    describe('-addTask', () => {
-        it('should add the particular task to the tasks array and check if the first task\'s id is correct', () => {
+    describe('addTask', () => {
+        it('Should add the particular task to the tasks array and check if the first task\'s id is correct', () => {
             //create the new variables to be passed on to the new Tas object
             const id = 0;
             const name = "Allign";
@@ -39,9 +39,9 @@ describe('#taskManager', () => {
         })
     })
 
-    describe('-deleteTask', () => {
-        describe('-should delete the task from the tasks array', () => {
-            it('should check if tasks array is empty', () => {
+    describe('deleteTask', () => {
+        describe('Should delete the task from the tasks array', () => {
+            it('Should check if tasks array is empty', () => {
                 //instantiate TaskManager object
                 const TM = new TaskManager();
 
@@ -69,8 +69,8 @@ describe('#taskManager', () => {
         })
     })
 
-    describe('-getTaskById', () => {
-        it('should get the Task object corresponding to id', () => {
+    describe('getTaskById', () => {
+        it('Should get the Task object corresponding to id', () => {
             // instantiate a new TaskManager object
             const TM = new TaskManager();
 
@@ -91,7 +91,7 @@ describe('#taskManager', () => {
     })
 
     describe("Test save to local Storage", () => {
-        it('should call the local Storage with the key and JSON String', () => {
+        it('Should call the local Storage with the key and JSON String', () => {
             const taskManager = new TaskManager();
 
             //create a new JSON string too be used for the expect of the Spy
@@ -115,7 +115,7 @@ describe('#taskManager', () => {
             expect(sp.calls.first().args).toEqual(['tasks', tasksJson]);
         })
 
-        it('should call the localStorage with the currentId key and value', () => {
+        it('Should call the localStorage with the currentId key and value', () => {
             const taskManager = new TaskManager();
 
             //create a new JSON string too be used for the expect of the Spy
