@@ -11,7 +11,7 @@ const inputName = document.querySelector('#form-validate-name');
 const inputDesc = document.querySelector('#form-validate-desc');
 const inputAsnTo = document.querySelector('#form-validate-assignto');
 const inputDD = document.querySelector('#form-validate-dt');
-const inputStat = document.querySelector('#form-validate-status')
+// const inputStat = document.querySelector('#form-validate-status')
 
 formMain.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -56,7 +56,7 @@ formMain.addEventListener('submit', (event) => {
         inputDD.classList.remove('is-valid');
     }
     //status
-    if (inputStat.value !== "") {
+    /* if (inputStat.value !== "") {
         inputStat.classList.add('is-valid');
         inputStat.classList.remove('is-invalid');
     }
@@ -64,7 +64,7 @@ formMain.addEventListener('submit', (event) => {
         allIsWell = 'false';
         inputStat.classList.add('is-invalid');
         inputStat.classList.remove('is-valid');
-    }
+    } */
 
     if (allIsWell == 'true') {
         taskMgr.addTask(inputName.value, inputDesc.value, inputAsnTo.value, inputDD.value);
@@ -74,12 +74,12 @@ formMain.addEventListener('submit', (event) => {
         inputDesc.value = " ";
         inputAsnTo.value = " ";
         inputDD.value = " ";
-        inputStat.value = " ";
+        // inputStat.value = " ";
         inputName.classList.remove('is-valid');
         inputDesc.classList.remove('is-valid');
         inputAsnTo.classList.remove('is-valid');
         inputDD.classList.remove('is-valid');
-        inputStat.classList.remove('is-valid');
+        // inputStat.classList.remove('is-valid');
     }
     else {
         console.log("Validations did not go through");

@@ -1,21 +1,10 @@
-.fa-1x {
-    font-size: 1.5rem;
-    }
-    .navbar-toggler.toggler-example {
-    cursor: pointer;
-    }
-    .dark-blue-text {
-    color: #0A38F5;
-    }
-    .dark-pink-text {
-    color: #AC003A;
-    }
-    .dark-amber-text {
-    color: #ff6f00;
-    }
-    .dark-teal-text {
-    color: #004d40;
-    }
-.card-todo{background-color:lightskyblue}
-.card-done{background-color: lemonchiffon}
+
+.caard-todo{background-color:lightskyblue}
+.card-todo{background-color:rgb(147, 210, 210)}
+.card-done{background-color: rgb(204, 204, 204)}
+.caard-done{background-color: lemonchiffon}
 .card-any{background-color: rgb(red, green)}
+footer{
+    text-align:center; 
+    font-family: 'Raleway', sans-serif;
+}
