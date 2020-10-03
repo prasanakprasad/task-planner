@@ -13,17 +13,18 @@ class Task {
 
 createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
   let renderHtml = `
-             <div class="col-4">
-              <div class="card ${(status === 'TODO') ? `list-group-item card-todo"` : (status === 'Done') ? `list-group-item card-done"` : `list-group-item card-any"`}
-     style = "width:400px" id = "mycard" data-task-id=${id}>
-    <div class="card-header">${name}                          <span class="badge badge-danger">${status}</span></div>
+             <div class="col-4 my-2">
+              <div class="card text-capitalize ${(status === 'TODO') ? `list-group-item card-todo"` : (status === 'Done') ? `list-group-item card-done"` : `list-group-item card-any"`}
+ style = "width:400px;" id = "mycard" data-task-id=${id}>
+    <div class="card-header large lead">${name}  <span class="badge  small ${(status === 'TODO') ? `badge-danger ` : `badge-success 
+    `}float-right">${status}</span></div>
     <div class="card-body">
       <h4 class="card-title"></h4>
       <p class="card-text"></p>
-      <p>${description}</p>
-      <p>Assigned to: ${assignedTo}</p>
-      <p>Due on: ${dueDate} </p>
-              
+      <p class="font-weight-bolder">${description}</p>
+      <label> ${assignedTo}</label>
+      <label class="float-right"> ${dueDate} </label>
+
       <div>
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor"
           xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +107,7 @@ class TaskManager {
       const taskDate = new Date(this.tasks[i].dueDate);
       console.log("test\n");
       console.log(taskDate);
-      const formattedDate = `${taskDate.getDay()}/${taskDate.getMonth()}/${taskDate.getFullYear()} `;
+      const formattedDate = `${taskDate.getDay()} /${taskDate.getMonth()}/${taskDate.getFullYear()} `;
       console.log(formattedDate);
       const taskHtml = createTaskHtml(this.tasks[i].id, this.tasks[i].name, this.tasks[i].description, this.tasks[i].assignedTo, formattedDate, this.tasks[i].status);
 

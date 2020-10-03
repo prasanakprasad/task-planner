@@ -8,3 +8,22 @@ footer{
     text-align:center; 
     font-family: 'Raleway', sans-serif;
 }
+.card{
+    font-size:.875rem;
+    font-family: 'Roboto', sans-serif;
+}
+.badge{
+    font-size:.685rem;
+}
+p{
+    text-overflow:ellipsis;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+p:hover{
+    text-overflow:clip;
+    width:auto;
+    white-space: normal;
+}

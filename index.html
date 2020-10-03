@@ -11,8 +11,9 @@
   <script src="js/taskManager.js" defer></script>
   <script src="js/index.js" defer></script>
   <link rel="stylesheet" href="index.css">
-  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
   <title>Task Planner</title>
 </head>
 
@@ -107,10 +108,10 @@
         </div>
         <!--  <div class="row">
           <div class="col-4">
-            <div class="card list-group-item" style="background-color: rgb(255,255,153)" style="width:400px;"
-              id="mycard">
+            <div class="card text-capitalize list-group-item" style="background-color: rgb(255,255,153)"
+              style="width:400px;" id="mycard">
               <div class="card-header">Mow the lawn 3
-                <span class="badge badge-danger">Todo</span>
+                <span class="badge badge-success float-right">Done</span>
               </div>
               <div class="card-body">
                 <h4 class="card-title">mow the lawn card name</h4>
@@ -204,7 +205,7 @@
             <div class="modal-body">
               <form id="form-validate" novalidate>
                 <div class="form-group">
-                  <label for="form-validate-name">Name:</label>
+                  <label for="form-validate-name">Task Name:</label>
                   <input type="text" class="form-control" placeholder="Enter task name" id="form-validate-name">
                   <div class="valid-feedback">Looks good!</div>
                   <div class="invalid-feedback">Name needs to be 2 characters long or more</div>
