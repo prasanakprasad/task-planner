@@ -13,9 +13,9 @@ class Task {
 
 createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
   let renderHtml = `
-             <div class="col-4 my-2">
+             <div class="col-sm-3 my-2">
               <div class="card text-capitalize ${(status === 'TODO') ? `list-group-item card-todo"` : (status === 'Done') ? `list-group-item card-done"` : `list-group-item card-any"`}
- style = "width:400px;" id = "mycard" data-task-id=${id}>
+ id = "mycard" data-task-id=${id}>
     <div class="card-header large lead">${name}  <span class="badge  small ${(status === 'TODO') ? `badge-danger ` : `badge-success 
     `}float-right">${status}</span></div>
     <div class="card-body">
@@ -63,11 +63,11 @@ class TaskManager {
 
     this.currentId++;
     this.tasks.push(newTask);
-    console.log("after add Task Push ", newTask);
+    console.log("After add Task Push ", newTask);
   }//addTask
 
   deleteTask(taskId) {
-    console.log("inside delete task", taskId);
+    console.log("Inside delete task", taskId);
     let newTasksList = [];
     for (let i = 0; i < this.tasks.length; i++) {
       if (this.tasks[i].id == taskId) { console.log("same task id and hence moving over"); }
@@ -92,9 +92,64 @@ class TaskManager {
     return foundTask;
   } //getTaskById
 
+  //get tasks based on assignedTo
+  getTasksByAssignedTo(assignedTo) {
+    let selectedTasksList = [];
+    for (let i = 0; i < this.tasks.length; i++) {
+      if ((this.tasks[i].assignedTo).toUpperCase() == assignedTo.toUpperCase()) {
+        selectedTasksList.push(this.tasks[i]);
+      }
+    }
+    return selectedTasksList;
+  }
 
+  //get Tasks based on a search text
+  //the search text can be part of the name, description or the assignedTo.
+  getTasksBySearchText(searchText) {
+    searchText = searchText.toUpperCase();
+    console.log("inside getTasksBySearchText", searchText);
+    let selectedTasksList = [];
+    for (let i = 0; i < this.tasks.length; i++) {
+      const task = this.tasks[i];
+      if (task.name.toUpperCase().includes(searchText)) {
+        selectedTasksList.push(task);
+      } else if (task.description.toUpperCase().includes(searchText)) {
+        selectedTasksList.push(task);
+      } else if (task.assignedTo.toUpperCase().includes(searchText)) {
+        selectedTasksList.push(task);
+      }
+    }
+    return selectedTasksList;
+  }
 
-  render() {
+  render(tasks = this.tasks) {
+    let tasksHtmlList = [];
+    let tasksHtml = "";
+
+    for (let i = 0; i < tasks.length; i++) {
+
+      // looping and storing in task variable
+      const task = tasks[i];
+
+      // formatting date
+      const taskDate = new Date(tasks[i].dueDate);
+      console.log("test\n");
+      console.log(taskDate);
+      const formattedDate = `${taskDate.getDay()} /${taskDate.getMonth()}/${taskDate.getFullYear()} `;
+      console.log(formattedDate);
+      const taskHtml = createTaskHtml(tasks[i].id, tasks[i].name, tasks[i].description, tasks[i].assignedTo, formattedDate, tasks[i].status);
+
+      tasksHtmlList.push(taskHtml);
+
+      tasksHtml = tasksHtml + taskHtml + "\n";
+
+    }
+    const taskListElement = document.querySelector("#taskListId");
+    taskListElement.innerHTML = tasksHtml;
+
+  }//render
+
+  render1() {
     let tasksHtmlList = [];
     let tasksHtml = "";
 

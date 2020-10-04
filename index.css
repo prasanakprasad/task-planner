@@ -17,7 +17,8 @@ footer{
 }
 p{
     text-overflow:ellipsis;
-    width: 250px;
+    /* width: 220px; */
+    width:90%;
     white-space: nowrap;
     overflow: hidden;
 }
