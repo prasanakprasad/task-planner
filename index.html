@@ -23,27 +23,37 @@
       <header>
         <!-- <div class="row"> -->
         <!-- <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"> -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-secondary my-3 pt-3 ">
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-secondary my-3 pt-3 ">
           <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <!-- <a class="navbar-brand" href="#">
-              Elite Task Manager
-            </a> -->
-            <div class="float-right">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <form class="form-inline nav-link">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn my-2 my-sm-0" style="color:lightgrey;" type="submit">Find</button>
-                  </form>
-                </li>
-              </ul>
-            </div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <form class="form-inline nav-link">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    id="form-search-input">
+                  <button class="btn my-2 my-sm-0" style="color:lightgrey;" type="submit" id="search">Find</button>
+                </form>
+              </li>
+            </ul>
           </div>
           <div class="mx-auto order-0">
-            <a class="navbar-brand" href="#">Elite Task Planner</a>
+            <a class="navbar-brand mx-auto" href="#">Elite Task Planner</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+              <span class="navbar-toggler-icon"></span>
+            </button>
           </div>
           <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Assignees
+                </a>
+                <div class="dropdown-menu" id="dropDownMenuLink" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" id="gowri" href="#">Gowri</a>
+                  <a class="dropdown-item" id="prasana" href="#">Prasana</a>
+                  <a class="dropdown-item" id="prameela" href="#">Prameela</a>
+                </div>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Add Task</a>
               </li>
@@ -61,7 +71,7 @@
       </header>
       <hr>
       </hr>
-      <div class="row">
+      <div class="row my-3 pt-3">
         <!-- <div class="col-2">
           <nav class="navbar bg-light" style="width:130px"> -->
         <!-- Links -->
@@ -102,8 +112,8 @@
         </div> -->
       </div>
 
-      <div class="container-fluid">
-        <div class="row" id="taskListId">
+      <div class="container-fluid my-3 pt-3">
+        <div class="row my-3 pt-3" id="taskListId">
 
         </div>
         <!--  <div class="row">
@@ -224,7 +234,7 @@
                   <input type="email" class="form-control " placeholder="Enter assignee name"
                     id="form-validate-assignto">
                   <div class="valid-feedback">Looks good!</div>
-                  <div class="invalid-feedback">AssignTo needs to be 8 characters long or more</div>
+                  <div class="invalid-feedback">Assigned To needs to be 4 characters long or more</div>
                 </div>
                 <div class="form-group">
                   <label for="form-validate-dt">Date:</label>

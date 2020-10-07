@@ -36,7 +36,7 @@ formMain.addEventListener('submit', (event) => {
         inputDesc.classList.remove('is-valid');
     }
     //check assignto
-    if (inputAsnTo.value.length > 7) {
+    if (inputAsnTo.value.length > 3) {
         inputAsnTo.classList.add('is-valid');
         inputAsnTo.classList.remove('is-invalid');
     }
@@ -114,6 +114,32 @@ taskListElement.addEventListener('click', (event) => {            // "event" her
     }
 
 });//addEventListener
+
+const findElement = document.querySelector('#search');
+
+findElement.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const searchInput = document.querySelector('#form-search-input').value;
+    //check if there is a text in the search input, if there is carry on calling getTasksByAssignedTo
+    if (searchInput !== '') {
+        const selectedTasks = taskMgr.getTasksBySearchText(searchInput);
+        taskMgr.render(selectedTasks);
+    }
+})
+
+const assigneeElement = document.querySelector('#dropDownMenuLink');
+
+assigneeElement.addEventListener('click', (event) => {
+    event.preventDefault();
+    const searchBy = event.target.innerHTML;
+    if (searchBy !== '') {
+        console.log("inside", searchBy);
+        const selectedTasks = taskMgr.getTasksByAssignedTo(searchBy);
+        taskMgr.render(selectedTasks);
+    }
+})
+
 
 //let elementsTBC=document.querySelectorAll('.checkBlank');
 // for (let i =0; i<elementTBC.length;i++)
