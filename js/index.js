@@ -98,6 +98,8 @@ formMain.addEventListener('submit', (event) => {
         inputAsnTo.classList.remove('is-valid');
         inputDD.classList.remove('is-valid');
         // inputStat.classList.remove('is-valid');
+        //hiding the modal as the taskk has been added
+        $('#myModal').modal('hide');
     }
     else {
         console.log("Validations did not go through");
@@ -155,17 +157,53 @@ taskListElement.addEventListener('click', (event) => {            // "event" her
     } 
 });//addEventListener
 
+function close(){
+        console.log("comming inside close");
+        const modifyButton = document.querySelector("#form-submit");
+        modifyButton.classList.remove("modify-button")
+        document.querySelector('.modal-title').innerHTML ="Add New Task details";
+        document.querySelector('#form-submit').innerHTML="Submit";
+        inputName.value ="";
+        inputDesc.value ="";
+        inputAsnTo.value ="";
+        inputDD.value ="";
+        inputName.classList.remove('is-valid');
+        inputDesc.classList.remove('is-valid');
+        inputAsnTo.classList.remove('is-valid');
+        inputDD.classList.remove('is-valid');
+        inputName.classList.remove('is-invalid');
+        inputDesc.classList.remove('is-invalid');
+        inputAsnTo.classList.remove('is-invalid');
+        inputDD.classList.remove('is-invalid');
+}
+
 const closeButton = document.querySelector('.close');
 
 closeButton.addEventListener('click',(event)=>{
+        close();
+})
+
+const mCloseButton = document.querySelector('.mclose');
+
+mCloseButton.addEventListener('click',(event)=>{
+    close();
+    /* console.log("comming inside close");
         const modifyButton = document.querySelector("#form-submit");
         modifyButton.classList.remove("modify-button")
-        document.querySelector('.modal-title').value ="Add New Task details";
-        document.querySelector('#form-submit').value="Submit";
-        document.querySelector('#form-validate-name').value ="";
-        document.querySelector('#form-validate-desc').value ="";
-        document.querySelector('#form-validate-assignto').value ="";
-        document.querySelector('#form-validate-dt').value ="";
+        document.querySelector('.modal-title').innerHTML ="Add New Task details";
+        document.querySelector('#form-submit').innerHTML="Submit";
+        inputName.value ="";
+        inputDesc.value ="";
+        inputAsnTo.value ="";
+        inputDD.value ="";
+        inputName.classList.remove('is-valid');
+        inputDesc.classList.remove('is-valid');
+        inputAsnTo.classList.remove('is-valid');
+        inputDD.classList.remove('is-valid');
+        inputName.classList.remove('is-invalid');
+        inputDesc.classList.remove('is-invalid');
+        inputAsnTo.classList.remove('is-invalid');
+        inputDD.classList.remove('is-invalid'); */
 })
 const findElement = document.querySelector('#search');
 
