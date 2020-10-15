@@ -15,6 +15,7 @@ const inputDD = document.querySelector('#form-validate-dt');
 
 formMain.addEventListener('submit', (event) => {
     event.preventDefault();
+    console.log("event is **** ",event);
     let allIsWell = 'true';
     if (inputName.value.length > 2) {
         inputName.classList.add('is-valid');
@@ -67,8 +68,25 @@ formMain.addEventListener('submit', (event) => {
     } */
 
     if (allIsWell == 'true') {
-        taskMgr.addTask(inputName.value, inputDesc.value, inputAsnTo.value, inputDD.value);
+        //if its from modify submit call updateTask else call addTask
+        if(event.submitter.classList.contains('modify-button')){
 
+            console.log("Just before updateTask");
+            console.log("modify desc is",inputDesc.value);
+
+            const modifyButton = document.querySelector("#form-submit");
+            const taskId=modifyButton.getAttribute('data-task-id');
+            
+            console.log("modify button taskid is",modifyButton.getAttribute('data-task-id'));
+            
+            modifyButton.classList.remove("modify-button")
+            document.querySelector(".modal-title").innerHTML = "Add New Task details";
+            document.querySelector("#form-submit").innerHTML = "Submit";
+            taskMgr.updateTask(taskId,inputName.value, inputDesc.value, inputAsnTo.value, inputDD.value);
+        }
+        else{
+        taskMgr.addTask(inputName.value, inputDesc.value, inputAsnTo.value, inputDD.value);
+        }
         //Clearing the form values for the next input
         inputName.value = " ";
         inputDesc.value = " ";
@@ -112,9 +130,43 @@ taskListElement.addEventListener('click', (event) => {            // "event" her
         taskMgr.save();
         taskMgr.render();
     }
+     if (event.target.classList.contains('edit-button')) {
+         //dynamically updateModal and populate the task details
+        //get the details of the card on to a new update Task Modal
 
+        const parentTask = event.target.parentNode.parentNode;
+        let taskId = parentTask.dataset.taskId;
+        taskId = Number(taskId);
+        let task =taskMgr.getTaskById(taskId);
+
+        document.querySelector(".modal-title").innerHTML = "Modify existing Task details";
+        
+        console.log("task name is",task.name);
+        document.querySelector('#form-validate-name').value= task.name;
+        document.querySelector('#form-validate-desc').value = task.description;
+        document.querySelector('#form-validate-assignto').value = task.assignedTo;
+        document.querySelector('#form-validate-dt').value = task.dueDate;
+        
+        const modifyButton = document.querySelector("#form-submit");
+        modifyButton.innerHTML="Modify";
+        modifyButton.classList.add("modify-button")
+        modifyButton.setAttribute('data-task-id', taskId);
+        $('#myModal').modal('show');
+    } 
 });//addEventListener
 
+const closeButton = document.querySelector('.close');
+
+closeButton.addEventListener('click',(event)=>{
+        const modifyButton = document.querySelector("#form-submit");
+        modifyButton.classList.remove("modify-button")
+        document.querySelector('.modal-title').value ="Add New Task details";
+        document.querySelector('#form-submit').value="Submit";
+        document.querySelector('#form-validate-name').value ="";
+        document.querySelector('#form-validate-desc').value ="";
+        document.querySelector('#form-validate-assignto').value ="";
+        document.querySelector('#form-validate-dt').value ="";
+})
 const findElement = document.querySelector('#search');
 
 findElement.addEventListener('click', (event) => {
